@@ -13,7 +13,7 @@ const requireAuth = (req, res, next) => {
                 // res.redirect('/login'); 
 
                 //throw 401 unauthorised access error
-                res.status(401).json({message : 'Token Not Verified, Authorisation Denied'});
+                res.status(401).json({success : false, message : 'Unauthorisation Denied'});
             }
             else{
                  console.log(decodedToken);

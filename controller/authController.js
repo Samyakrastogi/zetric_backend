@@ -1,7 +1,6 @@
 const User = require("../models/User");
 const jwt = require("jsonwebtoken");
-require('dotenv').config();
-
+// require('dotenv').config();
 
 const maxAge = 3 * 24 * 60 * 60;
 const createToken = (id) => {
@@ -10,26 +9,18 @@ const createToken = (id) => {
   });
 };
 
-// module.exports.signup_get = (req, res) => {
-//   res.json("signup");    
-// };
-
-// module.exports.login_get = (req, res) => {
-//   res.json("login");
-// };
-
 module.exports.signup_post = async (req, res) => {
-    console.log("body",req.body)
+  console.log("body", req.body);
   const { email, password } = req.body;
 
   try {
     const user = await User.create({ email, password });
     const token = createToken(user._id);
     res.cookie("jwt", token, { httpOnly: true, maxAge: maxAge * 1000 });
-    res.status(201).json({ user: user._id, jwt: id});
+    res.status(201).json({ success: true, user, token });
   } catch (err) {
     console.log(err);
-    res.status(400).send("error, user not created");
+    res.status(400).send("Error, User Not Created");
   }
 };
 
@@ -40,9 +31,9 @@ module.exports.login_post = async (req, res) => {
     const user = await User.login(email, password);
     const token = createToken(user._id);
     res.cookie("jwt", token, { httpOnly: true, maxAge: maxAge * 1000 });
-    res.status(201).json({ user: user._id });
+    res.status(201).json({ success: true, user: user._id, token });
   } catch (err) {
-    res.status(400).json({});
+    res.status(400).send("User Not Logged In, Invalid Credentials");
   }
   // console.log(email, password);
   // res.send('user login');
