@@ -3,7 +3,6 @@ const express = require('express');
 const router = express.Router();
 
 const userSchema = require('../models/User.js');
-
 const authController = require('../controller/authController')
 
  
