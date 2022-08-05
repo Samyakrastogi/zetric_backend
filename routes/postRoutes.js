@@ -7,7 +7,7 @@ const { AuthenticateJWT } = require('../middleware/postMiddleware');
 
 
  
-router.post('/create-post', AuthenticateJWT, postController.create_post );
+router.post('/post/create-post', AuthenticateJWT, postController.create_post );
 router.get('/get-all-post', postController.get_all_post);
 
 

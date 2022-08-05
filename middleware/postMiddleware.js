@@ -5,7 +5,7 @@ const AuthenticateJWT = (req, res, next) => {
     console.log("Hii")
     // console.log(req)
     // console.log(res)
-    const authtoken =req.headers.bearertoken
+    const authtoken =req.headers.authorization
     console.log(authtoken)
     //to verify whether jwt token is same
     if(authtoken){

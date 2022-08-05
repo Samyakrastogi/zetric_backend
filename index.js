@@ -10,7 +10,7 @@ const cookieParser = require("cookie-parser");
 
 const authRoutes = require("./routes/authRoutes");
 const postRoutes = require('./routes/postRoutes');
-const profileRoutes = require('./routes/profileRoutes')
+const profileRoutes =require('./routes/profileRoutes');
 
 const mongoose = require("./db.js");
 

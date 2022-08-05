@@ -6,7 +6,7 @@ module.exports.create_post = async (req,res) => {
     const newPost = new Post(req.body);
     try{
         const savedPost = newPost.save(); 
-        res.status(201).json({ success: true, savedPost });
+        res.status(201).json({ success: true, newPost });
     }
     catch(err){
         console.log(err);
