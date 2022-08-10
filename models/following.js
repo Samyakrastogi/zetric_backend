@@ -16,5 +16,5 @@ const followingAndFollowerSchema = new mongoose.Schema({
   profileImageURL: String,
   // Maybe add username as a link to redirect to the specific profile
 });
-
+const Following = mongoose.model('following', followingAndFollowerSchema);
 module.exports = followingAndFollowerSchema;

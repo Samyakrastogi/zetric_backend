@@ -16,12 +16,30 @@ module.exports.create_post = async (req,res) => {
 
 module.exports.get_all_post = async (req,res) => {
     let postArray = [];
+   // console.log("get-all-post",req.body)
+
     try{
+        const posts=await Post.find({_userId:req.body._userId});
+        console.log("posts", posts)
+        res.status(201).json({ success: true, posts })
 
     }
     catch(err){
         console.log(err);
-            const userPosts = await Post.find({userId : currentUser._id});res.status(400).
-        json("Error, All Post Not Fetched")
+        res.status(400).json("Error, All Post Not Fetched")
+    }
+}
+
+module.exports.delete_post=async(req, res)=>{
+    console.log("delete",req.params)
+    const id=req.params.id
+    try{
+        const delete_Post= await Post.findByIdAndDelete(id )
+        console.log(delete_Post)
+        res.status(201).json({ success: true, delete_Post, message:"post deleted" })
+    }
+    catch{
+        res.status(400).json("Error, Post Not deleted")
+
     }
 }
