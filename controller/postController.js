@@ -1,6 +1,5 @@
 const Post = require('../models/Post');
 
-
 //Create a new Post
 module.exports.create_post = async (req,res) => {
     const newPost = new Post(req.body);
@@ -17,12 +16,10 @@ module.exports.create_post = async (req,res) => {
 module.exports.get_all_post = async (req,res) => {
     let postArray = [];
    // console.log("get-all-post",req.body)
-
     try{
         const posts=await Post.find({_userId:req.body._userId});
         console.log("posts", posts)
         res.status(201).json({ success: true, posts })
-
     }
     catch(err){
         console.log(err);
@@ -31,15 +28,28 @@ module.exports.get_all_post = async (req,res) => {
 }
 
 module.exports.delete_post=async(req, res)=>{
-    console.log("delete",req.params)
+    //console.log("delete",req.params)
     const id=req.params.id
     try{
-        const delete_Post= await Post.findByIdAndDelete(id )
-        console.log(delete_Post)
-        res.status(201).json({ success: true, delete_Post, message:"post deleted" })
+        const delete_post= await Post.findByIdAndDelete(id )
+        console.log(delete_post)
+        res.status(201).json({ success: true, delete_post, message:"post deleted" })
     }
     catch{
         res.status(400).json("Error, Post Not deleted")
+
+    }
+}
+module.exports.update_post=async(req, res)=>{
+    console.log("update",req.body)
+    const id=req.params.id
+    try{
+        const update_post= await Post.findByIdAndUpdate(id, {post:req.body.post, updateAt: new Date()})
+        console.log(update_post)
+        res.status(201).json({ success: true,update_post, message:"post updated" })
+    }
+    catch{
+        res.status(400).json("Error, Post Not updated")
 
     }
 }

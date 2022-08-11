@@ -12,7 +12,7 @@ const authRoutes = require("./routes/authRoutes");
 const postRoutes = require('./routes/postRoutes');
 const profileRoutes = require('./routes/profileRoutes')
 const userListRoutes=require('./routes/userListRoutes')
-const followingRoutes=require('./routes/followingRoutes')
+
 
 //const mongoose = require("./db.js");
 const mongoose = require("mongoose")
@@ -44,6 +44,5 @@ app.use('/auth', authRoutes);
 app.use('/post', postRoutes);
 app.use('/v2', profileRoutes);
 app.use('/users',userListRoutes);
-app.use('/f',followingRoutes )
 
 app.listen(3000, () => console.log("Server started at port: 3000"));
