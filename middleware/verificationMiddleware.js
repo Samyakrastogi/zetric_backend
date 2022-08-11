@@ -20,7 +20,7 @@ const AuthenticateJWT = (req, res, next) => {
         })
     }
     else{
-        res.redirect('/create-post');
+        res.redirect('/login');
     }
 }
 

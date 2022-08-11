@@ -15,9 +15,9 @@ module.exports.create_post = async (req,res) => {
 };
 
 module.exports.get_all_post = async (req,res) => {
-    let postArray = [];
+    
     try{
-
+        const posts = await Post.find({userId : req.body._userId});
     }
     catch(err){
         console.log(err);

@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const followingAndFollowerSchema = new mongoose.Schema({
+const followingFollowerSchema = new mongoose.Schema({
   userId: {
     //logged in user's id
     type: mongoose.Schema.Types.ObjectId,
@@ -15,6 +15,10 @@ const followingAndFollowerSchema = new mongoose.Schema({
   userName: { type: String, required: true }, //username of id to be followed
   profileImageURL: String,
   // Maybe add username as a link to redirect to the specific profile
+  followedTo : [],
+  followedBy : []  
 });
 
-module.exports = followingAndFollowerSchema;
+const followingFollower = mongoose.model("followingFollower", followingFollowerSchema);
+
+module.exports = followingFollower;

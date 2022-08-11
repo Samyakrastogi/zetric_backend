@@ -11,6 +11,7 @@ const cookieParser = require("cookie-parser");
 const authRoutes = require("./routes/authRoutes");
 const postRoutes = require('./routes/postRoutes');
 const profileRoutes =require('./routes/profileRoutes');
+const followingFollowerRoutes = require('./routes/followingFollowerRoutes')
 
 const mongoose = require("./db.js");
 
@@ -25,5 +26,6 @@ app.use(express.json());
 app.use('/auth', authRoutes);
 app.use('/v1', postRoutes);
 app.use('/v2', profileRoutes);
+app.use('/v3', followingFollowerRoutes);
 
 app.listen(3000, () => console.log("Server started at port: 3000"));

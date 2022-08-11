@@ -1,8 +1,6 @@
-const Profile = require("../models/Profile");
+// const Profile = require("../models/Profile");
 const User = require("../models/User");
 
-
- 
 
 const getProfileById = async (req, res) => {
   console.log(req.params.id);
